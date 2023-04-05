@@ -1,2 +1,3 @@
 # second_bet_calc
-I guess this is my first project or something.
+"Two things are infinite: the universe and human stupidity; and I'm not sure about the universe."
+― Albert Einstein
