@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Second Bet Calculator</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f5f5f5;
+      }
+      
+      h1 {
+        text-align: center;
+        margin-top: 50px;
+        margin-bottom: 30px;
+      }
+      
+      form {
+        width: 350px;
+        margin: 0 auto;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.3);
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 10px;
+      }
+      
+      input[type="number"] {
+        width: 100%;
+        padding: 8px 10px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+        margin-bottom: 20px;
+      }
+      
+      input[type="submit"] {
+        background-color: #4CAF50;
+        color: #fff;
+        padding: 10px 16px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+      }
+      
+      input[type="submit"]:hover {
+        background-color: #3e8e41;
+      }
+      
+      p {
+        margin-top: 20px;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Second Bet Calculator</h1>
+    <form>
+      <label for="odds">First bet odds = </label>
+      <input type="number" id="odds" step="0.01" required><br><br>
+      <label for="stake">First bet stake = </label>
+      <input type="number" id="stake" name="stake" required>
+      <input type="submit" value="Calculate">
+    </form>
+    <p id="result"></p>
+    <script>
+      const form = document.querySelector('form');
+      const result = document.querySelector('#result');
+
+      form.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const First_bet_odds = parseFloat(document.querySelector('#odds').value);
+        const First_bet_stake = parseInt(document.querySelector('#stake').value);
+        const total_win = First_bet_odds * First_bet_stake;
+        const pure_profit = parseFloat(total_win - First_bet_stake);
+        const Second_bet_odds = total_win / pure_profit;
+        result.textContent = `Second bet odds <= ${Second_bet_odds.toFixed(2)}`;
+      });
+    </script>
+  </body>
+</html>
